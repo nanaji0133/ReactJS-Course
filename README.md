@@ -1,3 +1,30 @@
+Installation process:-
+
+Install node for the latest version
+
+Install npm
+
+Install npx
+
+now make a directory:- 
+
+
+For anyone running on local host:
+1. On your terminal, navigate to your sub folder you want the project to be on.
+(e.g. Desktop, React Projects. etc.)
+mkdir <Folder name>
+cd ../<Folder name>
+2. Run "npx create-react-app (Whatever you wanna call your app) "
+npx create-react-app <app name>
+3. Navigate to the app folder (cd my-app or whatever)
+cd <app name>
+4. You will have two folders: public and src. In your public folder, you can delete everything and/or replace the index.html file in the public folder, and place the styles.css in here as well. 
+5. In the src folder, delete all App.js, app.tester.js, app.css 
+6. Replace the index.js file with the one you just coded. 
+7. Run NPM start and you should be good to go
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
