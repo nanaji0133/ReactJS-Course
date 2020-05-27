@@ -22,6 +22,7 @@ cd <app name>
 5. In the src folder, delete all App.js, app.tester.js, app.css 
 6. Replace the index.js file with the one you just coded. 
 7. Run NPM start and you should be good to go
+8. put the style.css in the public folder and give link in the index.html
 
 
 
