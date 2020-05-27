@@ -5,6 +5,8 @@ export default Header;
 function Header ()
 {
     return (
-        <header className="navbar"> This is my Header</header>
+        <header className="navbar">
+            TO-DO APP
+        </header>
     );
 }

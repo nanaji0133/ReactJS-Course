@@ -12,3 +12,22 @@ body {
     justify-content: center;
     align-items: center;
 }
+
+.checkbox{
+    padding: 20px;
+    margin: 20px;
+}
+
+
+.todoitem {
+    margin: 30px 0 30px 0px;
+    /* border: 2px solid green; */
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.my-div{
+    background-color: aqua;
+}
