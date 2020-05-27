@@ -1,17 +1,22 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import ReactDom from "react-dom";
 
-function MyApp ()
+function MyInfo ()
 {
     return (
         <div>
-            <ul>
-                <li>first item</li><li>second item</li><li>third item</li>
-            </ul>
+            <h1>Nanaji Sanka</h1>
+            <p> These are my education qualifications</p>
+            <ol>
+                <li>web Developer</li>
+                <li>Masters</li>
+                <li>Btech</li>
+            </ol>
         </div>
     );
 }
 
-ReactDOM.render(
-    <MyApp />,
-    document.getElementById("root"));
+ReactDom.render(
+    <MyInfo />,
+    document.getElementById("root")
+);
