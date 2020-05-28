@@ -1,36 +1,24 @@
 import React from "react";
-import ContactCard from "./ContactCard";
+import data from "./Data";
+import Fullname from "./Fullname";
 
 export default App;
 
+
+
 function App ()
 {
+    const contactData = data.map(data => <Fullname key={ data.id }
+        details={ {
+            firstname: data.firstname,
+            secondname: data.secondname
+        } }
+
+
+    />);
     return (
-        <div className="contacts">
-            <ContactCard
-                contact={ {
-                    name: "rohit", imgUrl: "/pictures/rohit.jpeg",
-                    number: 1234, email: "rohit@gmail.com"
-                } }
-            />
-            <ContactCard
-                contact={ {
-                    name: "dhoni", imgUrl: "/pictures/dhoni.jpeg",
-                    number: 1234, email: "dhoni@gmail.com"
-                } }
-            />
-            <ContactCard
-                contact={ {
-                    name: "virat", imgUrl: "/pictures/virat.jpeg",
-                    number: 1234, email: "virat@gmail.com"
-                } }
-            />
-            <ContactCard
-                contact={ {
-                    name: "bhuvi", imgUrl: "/pictures/bhuvi.jpeg",
-                    number: 1234, email: "bhuvi@gmail.com"
-                } }
-            />
+        <div>
+            { contactData }
         </div>
     );
 }
