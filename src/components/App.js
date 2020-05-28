@@ -1,18 +1,36 @@
 import React from "react";
-import Header from "./Header";
-import ToDoItem from "./ToDoItem";
+import ContactCard from "./ContactCard";
 
 export default App;
 
 function App ()
 {
     return (
-        <div className="my-div">
-            <Header />
-            <ToDoItem />
-            <ToDoItem />
-            <ToDoItem />
-            <ToDoItem />
+        <div className="contacts">
+            <ContactCard
+                contact={ {
+                    name: "rohit", imgUrl: "/pictures/rohit.jpeg",
+                    number: 1234, email: "rohit@gmail.com"
+                } }
+            />
+            <ContactCard
+                contact={ {
+                    name: "dhoni", imgUrl: "/pictures/dhoni.jpeg",
+                    number: 1234, email: "dhoni@gmail.com"
+                } }
+            />
+            <ContactCard
+                contact={ {
+                    name: "virat", imgUrl: "/pictures/virat.jpeg",
+                    number: 1234, email: "virat@gmail.com"
+                } }
+            />
+            <ContactCard
+                contact={ {
+                    name: "bhuvi", imgUrl: "/pictures/bhuvi.jpeg",
+                    number: 1234, email: "bhuvi@gmail.com"
+                } }
+            />
         </div>
     );
 }
