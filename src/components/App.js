@@ -1,24 +1,24 @@
 import React from "react";
-import data from "./Data";
-import Fullname from "./Fullname";
+import Header from "./Header";
+import todoData from "./todoData";
+import ToDoItem from "./ToDoItem";
 
 export default App;
 
-
-
 function App ()
 {
-    const contactData = data.map(data => <Fullname key={ data.id }
-        details={ {
-            firstname: data.firstname,
-            secondname: data.secondname
-        } }
-
-
+    const renderData = todoData.map(data => <ToDoItem key={ data.id }
+        taskData={ data }
     />);
+    //     taskData={ {
+    //         completed: data.completed,
+    //         task: data.task
+    //     } }
+    // />);
     return (
-        <div>
-            { contactData }
+        <div className="my-div">
+            <Header />
+            { renderData }
         </div>
     );
 }
