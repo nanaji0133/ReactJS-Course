@@ -11,7 +11,8 @@ class App extends React.Component
         this.state = {
             name: "nanaji",
             answer: "no",
-            msg: "How we can help you"
+            msg: "How we can help you",
+            loggedin: false,
         };
     }
     render ()
@@ -19,6 +20,8 @@ class App extends React.Component
         return (
             <div>
                 <Heading name={ this.state.name } />
+
+                <p>is it logged { this.state.loggedin ? "in" : "out" }</p>
 
                 <Greeting />
 
