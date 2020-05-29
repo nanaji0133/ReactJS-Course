@@ -1,4 +1,6 @@
 import React from "react";
+import Greeting from "./Greeting";
+import Heading from "./Heading";
 
 
 class App extends React.Component
@@ -7,7 +9,11 @@ class App extends React.Component
     {
         return (
             <div>
-                class based react
+                <Heading person={ {
+                    name: "nanaji"
+                } } />
+
+                <Greeting />
             </div>
         );
     }
