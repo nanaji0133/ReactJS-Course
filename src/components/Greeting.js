@@ -2,6 +2,7 @@ import React from "react";
 
 class Greeting extends React.Component
 {
+
     Hour ()
     {
         const hour = new Date().getHours();

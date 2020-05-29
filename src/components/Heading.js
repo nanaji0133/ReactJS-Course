@@ -6,7 +6,7 @@ class Heading extends React.Component
     {
         return (
             <div>
-                <h1>Welcome { this.props.person.name } </h1>
+                <h1>Welcome { this.props.name } </h1>
             </div>
         );
     }
