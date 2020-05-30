@@ -1,6 +1,7 @@
 import React from "react";
-import Greeting from "./Greeting";
-import Heading from "./Heading";
+import Header from "./Header";
+import todoData from "./todoData";
+import ToDoItem from "./ToDoItem";
 
 
 class App extends React.Component
@@ -9,24 +10,19 @@ class App extends React.Component
     {
         super();
         this.state = {
-            name: "nanaji",
-            answer: "no",
-            msg: "How we can help you",
-            loggedin: false,
+            todoData: todoData.map(data => <ToDoItem completed={ data.completed }
+                task={ data.task } />)
         };
     }
+
     render ()
     {
         return (
-            <div>
-                <Heading name={ this.state.name } />
-
-                <p>is it logged { this.state.loggedin ? "in" : "out" }</p>
-
-                <Greeting />
-
-                <h4>{ this.state.msg }</h4>
+            <div className="my-div">
+                <Header />
+                { this.state.todoData }
             </div>
+
         );
     }
 }
