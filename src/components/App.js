@@ -11,8 +11,22 @@ class App extends React.Component
         super();
         this.state = {
             todoData: todoData.map(data => <ToDoItem key={ data.id } completed={ data.completed }
-                task={ data.task } />)
+                task={ data.task } />),
+            count: 0
         };
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick ()
+    {
+        // this.setState({ count: 1 });
+        this.setState(preState =>
+        {
+            console.log(preState.count);
+            return ({
+                count: preState.count + 1
+            });
+        });
     }
 
     render ()
@@ -20,7 +34,10 @@ class App extends React.Component
         return (
             <div className="my-div">
                 <Header />
-                { this.state.todoData }
+                <h1>{ this.state.count }</h1>
+                <button onClick={ this.handleClick }>Click</button>
+
+                {/* { this.state.todoData } */ }
             </div>
 
         );
