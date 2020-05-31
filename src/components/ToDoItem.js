@@ -14,8 +14,16 @@ class ToDoItem extends React.Component
     {
         return (
             <div className="todoitem" >
-                <input type="checkbox" className="checkbox" checked={ this.props.completed } />
-                <p style={ { textDecoration: this.props.completed ? "line-through" : "none" } }>
+
+                <input onChange={ () => console.log("hi") }
+                    type="checkbox" className="checkbox"
+                    checked={ this.props.completed }
+                />
+
+                <p style={ {
+                    textDecoration: this.props.completed ?
+                        "line-through" : "none"
+                } }>
                     { this.props.task }
                 </p>
 

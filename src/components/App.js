@@ -10,7 +10,7 @@ class App extends React.Component
     {
         super();
         this.state = {
-            todoData: todoData.map(data => <ToDoItem completed={ data.completed }
+            todoData: todoData.map(data => <ToDoItem key={ data.id } completed={ data.completed }
                 task={ data.task } />)
         };
     }
