@@ -1,35 +1,57 @@
-import React, { Component } from "react";
+import React from "react";
+import Header from "./Header";
+import todoData from "./todoData";
+import ToDoItem from "./ToDoItem";
 
 
-class App extends Component
+class App extends React.Component
 {
     constructor()
     {
         super();
         this.state = {
-            isLogged: true,
+            todoData: todoData
         };
-        this.handleClick = this.handleClick.bind(this);
+
+        this.handleChange = this.handleChange.bind(this);
+
     }
 
-    handleClick ()
+    handleChange (id)
     {
-        this.setState((prevState) => ({
-            isLogged: !prevState.isLogged
-        })
-        );
-    }
+        this.setState(prevState =>
+        {
+            let newtodoData = prevState.todoData.map(data =>
+            {
+                if (data.id == id)
+                {
+                    data.completed = !data.completed;
+                }
+                return data;
+            });
+            return ({
+                todoData: newtodoData
+            });
+        });
+    };
+
+
     render ()
     {
+        let todoDataRender = this.state.todoData.map(
+            data => <ToDoItem key={ data.id }
+                handleFn={ this.handleChange }
+                data={ data }
+            />);
         return (
-            <div>
-                { this.state.isLogged ? <h1>User logged in</h1> :
-                    <h1>User logged out</h1> }
-                <button onClick={ this.handleClick } >
-                    { this.state.isLogged ? "log out" : "log in" }
-                </button>
-            </div>
+
+            < div className="my-div" >
+                <Header />;
+                { todoDataRender }
+            </div >
+
         );
     }
+
 }
 export default App;
