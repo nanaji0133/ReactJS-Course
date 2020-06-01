@@ -2,14 +2,6 @@ import React from "react";
 
 class ToDoItem extends React.Component
 {
-    constructor()
-    {
-        super();
-        // this.state = {
-        //     textDecoration: this.props.completed ? "line-through" : "none"
-        // };
-    }
-
     render ()
     {
         return (
