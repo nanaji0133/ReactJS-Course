@@ -10,38 +10,48 @@ class App extends React.Component
     {
         super();
         this.state = {
-            todoData: todoData.map(data => <ToDoItem key={ data.id } completed={ data.completed }
-                task={ data.task } />),
-            count: 0
+            todoData: todoData
         };
-        this.handleClick = this.handleClick.bind(this);
+
+        this.handleChange = this.handleChange.bind(this);
+
     }
 
-    handleClick ()
+    handleChange (id)
     {
-        // this.setState({ count: 1 });
-        this.setState(preState =>
+        this.setState(prevState =>
         {
-            console.log(preState.count);
+            let newtodoData = prevState.todoData.map(data =>
+            {
+                if (data.id == id)
+                {
+                    data.completed = data.completed ? false : true;
+                }
+                return data;
+            });
             return ({
-                count: preState.count + 1
+                todoData: newtodoData
             });
         });
-    }
+    };
+
 
     render ()
     {
+        let todoDataRender = this.state.todoData.map(
+            data => <ToDoItem key={ data.id }
+                handleFn={ this.handleChange }
+                data={ data }
+            />);
         return (
-            <div className="my-div">
-                <Header />
-                <h1>{ this.state.count }</h1>
-                <button onClick={ this.handleClick }>Click</button>
 
-                {/* { this.state.todoData } */ }
-            </div>
+            < div className="my-div" >
+                <Header />;
+                { todoDataRender }
+            </div >
 
         );
     }
-}
 
+}
 export default App;

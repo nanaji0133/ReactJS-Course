@@ -15,16 +15,16 @@ class ToDoItem extends React.Component
         return (
             <div className="todoitem" >
 
-                <input onChange={ () => console.log("hi") }
+                <input onChange={ () => this.props.handleFn(this.props.data.id) }
                     type="checkbox" className="checkbox"
-                    checked={ this.props.completed }
+                    checked={ this.props.data.completed }
                 />
 
                 <p style={ {
-                    textDecoration: this.props.completed ?
+                    textDecoration: this.props.data.completed ?
                         "line-through" : "none"
                 } }>
-                    { this.props.task }
+                    { this.props.data.task }
                 </p>
 
             </div >
