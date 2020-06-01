@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import AppPrtc from "./components/AppPrtc";
+import App from "./components/App";
 
 
 ReactDOM.render(
-    <AppPrtc />,
+    <App />,
     document.getElementById("root")
 );

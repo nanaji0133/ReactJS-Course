@@ -1,57 +1,38 @@
-import React from "react";
-import Header from "./Header";
-import todoData from "./todoData";
-import ToDoItem from "./ToDoItem";
+import React, { Component } from "react";
+import Conditional from "./Conditional";
 
-
-class App extends React.Component
+class App extends Component
 {
     constructor()
     {
         super();
         this.state = {
-            todoData: todoData
+            isLoading: true
         };
-
-        this.handleChange = this.handleChange.bind(this);
-
     }
 
-    handleChange (id)
+    componentDidMount ()
     {
-        this.setState(prevState =>
+        setTimeout(() =>
         {
-            let newtodoData = prevState.todoData.map(data =>
-            {
-                if (data.id == id)
-                {
-                    data.completed = data.completed ? false : true;
-                }
-                return data;
+            this.setState({
+                isLoading: false
             });
-            return ({
-                todoData: newtodoData
-            });
-        });
-    };
-
+        }, 1000);
+    }
 
     render ()
     {
-        let todoDataRender = this.state.todoData.map(
-            data => <ToDoItem key={ data.id }
-                handleFn={ this.handleChange }
-                data={ data }
-            />);
         return (
-
-            < div className="my-div" >
-                <Header />;
-                { todoDataRender }
-            </div >
-
+            <div>
+                {
+                    this.state.isLoading
+                        ? <h1>Loading.....</h1> :
+                        <Conditional />
+                }
+            </div>
         );
     }
-
 }
+
 export default App;
