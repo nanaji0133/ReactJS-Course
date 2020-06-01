@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Conditional from "./Conditional";
 
 class App extends Component
 {
@@ -7,29 +6,17 @@ class App extends Component
     {
         super();
         this.state = {
-            isLoading: true
+            msgs: [
+                "one msg", "two msg"
+            ]
         };
-    }
-
-    componentDidMount ()
-    {
-        setTimeout(() =>
-        {
-            this.setState({
-                isLoading: false
-            });
-        }, 1000);
     }
 
     render ()
     {
         return (
-            <div>
-                {
-                    this.state.isLoading
-                        ? <h1>Loading.....</h1> :
-                        <Conditional />
-                }
+            <div>{ this.state.msgs.length > 0 &&
+                <h1>you have { this.state.msgs.length } msg</h1> }
             </div>
         );
     }
