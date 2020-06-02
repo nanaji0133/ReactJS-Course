@@ -16,9 +16,10 @@ class App extends Component
 
     handleChange (event)
     {
+        const { name, value } = event.target;
         this.setState({
 
-            [event.target.name]: event.target.value
+            [name]: value
         });
     }
 
@@ -27,10 +28,10 @@ class App extends Component
         return (
             <div className="my-div" >
                 <form>
-                    <input name="firstname" type="text"
+                    <input name="firstname" type="text" value={ this.state.firstname }
                         placeholder="first name" onChange={ this.handleChange } />
                     <br />
-                    <input name="lastname" type="text"
+                    <input name="lastname" type="text" value={ this.state.lastname }
                         placeholder="last name" onChange={ this.handleChange } />
                     <br />
                     <h1>{ this.state.firstname } { this.state.lastname }</h1>
