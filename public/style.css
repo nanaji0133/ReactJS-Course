@@ -21,4 +21,10 @@ body {
     flex-direction: column;
     justify-content: center;
     text-align: center;
+    height: 100vh;
+}
+
+.my-form {
+    display: flex;
+    flex-direction: column;
 }

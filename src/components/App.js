@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Team from "./Team";
+
 
 class App extends Component
 {
@@ -7,36 +7,45 @@ class App extends Component
     {
         super();
         this.state = {
-            loading: false,
-            teamApi: []
+            value: ""
         };
+
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    componentDidMount ()
+    handleChange (event)
     {
-        this.setState({ loading: true });
-
-        fetch("http://127.0.0.1:8000/team/")
-            .then(response => response.json())
-            .then(data =>
-            {
-                this.setState({ teamApi: data });
-                this.setState({ loading: false });
-                console.log(this.state.teamApi);
-            });
+        this.setState({ value: event.target.value });
     }
+
+    handleSubmit (event)
+    {
+        alert("entered value:" + this.state.value);
+        this.setState({ value: "" });
+        event.preventDefault();
+    }
+
     render ()
     {
-        // const teamDetails = this.state.teamApi.map(data => <Team key={ data.id }
-        //     data={ data } />
-        // );
         return (
-            <div className="my-div">
+            <div className="my-div" onSubmit={ this.handleSubmit }>
+                <form className="my-form" >
+                    <label>
+                        <input type="text" value={ this.state.value }
+                            onChange={ this.handleChange } />
 
-                { this.state.loading ? <h4>Loading</h4> : this.state.teamApi.map(data =>
-                    <Team key={ data.id }
-                        data={ data } />) }
+                    </label>
 
+                    <textarea value={ this.state.value }
+                        onChange={ this.handleChange }
+                        style={ { width: "50vw",  } } />
+
+                    <label>
+                        <input type="submit" value="submit" />
+                    </label>
+
+                </form>
             </div>
         );
     }
