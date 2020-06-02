@@ -1,57 +1,43 @@
-import React from "react";
-import Header from "./Header";
-import todoData from "./todoData";
-import ToDoItem from "./ToDoItem";
+import React, { Component } from "react";
+import Team from "./Team";
 
-
-class App extends React.Component
+class App extends Component
 {
     constructor()
     {
         super();
         this.state = {
-            todoData: todoData
+            loading: true,
+            teamApi: {}
         };
-
-        this.handleChange = this.handleChange.bind(this);
-
     }
 
-    handleChange (id)
+    componentDidMount ()
     {
-        this.setState(prevState =>
-        {
-            let newtodoData = prevState.todoData.map(data =>
+
+        fetch("http://127.0.0.1:8000/team/")
+            .then(response => response.json())
+            .then(data =>
             {
-                if (data.id == id)
-                {
-                    data.completed = !data.completed;
-                }
-                return data;
+                this.setState({ teamApi: data });
+                this.setState({ loading: false });
+                console.log(this.state.teamApi);
             });
-            return ({
-                todoData: newtodoData
-            });
-        });
-    };
-
-
+    }
     render ()
     {
-        let todoDataRender = this.state.todoData.map(
-            data => <ToDoItem key={ data.id }
-                handleFn={ this.handleChange }
-                data={ data }
-            />);
+        // const teamDetails = this.state.teamApi.map(data => <Team key={ data.id }
+        //     data={ data } />
+        // );
         return (
+            <div className="my-div">
 
-            < div className="my-div" >
-                <Header />;
-                { todoDataRender }
-            </div >
+                { this.state.loading ? <h4>Loading</h4> : this.state.teamApi.map(data =>
+                    <Team key={ data.id }
+                        data={ data } />) }
 
+            </div>
         );
     }
-
 }
 export default App;
