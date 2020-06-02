@@ -7,13 +7,14 @@ class App extends Component
     {
         super();
         this.state = {
-            loading: true,
-            teamApi: {}
+            loading: false,
+            teamApi: []
         };
     }
 
     componentDidMount ()
     {
+        this.setState({ loading: true });
 
         fetch("http://127.0.0.1:8000/team/")
             .then(response => response.json())
