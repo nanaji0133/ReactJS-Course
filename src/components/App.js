@@ -7,7 +7,7 @@ class App extends Component
     {
         super();
         this.state = {
-            value: ""
+            value: "item 1"
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -31,7 +31,7 @@ class App extends Component
         return (
             <div className="my-div" onSubmit={ this.handleSubmit }>
                 <form className="my-form" >
-                    <label>
+                    {/* <label>
                         <input type="text" value={ this.state.value }
                             onChange={ this.handleChange } />
 
@@ -39,7 +39,14 @@ class App extends Component
 
                     <textarea value={ this.state.value }
                         onChange={ this.handleChange }
-                        style={ { width: "50vw",  } } />
+                        style={ { width: "50vw",  } } /> */}
+
+                    <select value={ this.state.value }
+                        onChange={ this.handleChange }>
+                        <option value="item 1">item 1</option>
+                        <option value="item 2">item 2</option>
+                        <option value="item 3">item 3</option>
+                    </select>
 
                     <label>
                         <input type="submit" value="submit" />
