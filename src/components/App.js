@@ -9,6 +9,8 @@ class App extends Component
         this.state = {
             firstname: "",
             lastname: "",
+            textarea: "",
+            isChecked: true,
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -16,12 +18,26 @@ class App extends Component
 
     handleChange (event)
     {
-        const { name, value } = event.target;
-        this.setState({
+        const { name, value, type, checked } = event.target;
+        console.log(event);
+        name === "checkbox" ? this.setState({ isChecked: checked })
+            : this.setState({ [name]: value });
+        // const { name, value } = event.target;
 
-            [name]: value
-        });
+        // this.setState((prevState) =>
+        // {
+        //     if (name === "checkbox")
+        //     {
+        //         return ({ checked: !prevState.checked });
+
+        //     } else
+        //     {
+        //         return ({ [name]: value });
+        //     }
+        // });
+
     }
+
 
     render ()
     {
@@ -34,10 +50,17 @@ class App extends Component
                     <input name="lastname" type="text" value={ this.state.lastname }
                         placeholder="last name" onChange={ this.handleChange } />
                     <br />
-                    <h1>{ this.state.firstname } { this.state.lastname }</h1>
+                    <h1>{ this.state.firstname } { this.state.lastname } { this.state.textarea }</h1>
+                    <br />
+                    <textarea name="textarea" value={ this.state.textarea }
+                        placeholder="type some text" onChange={ this.handleChange } />
+                    <br />
+                    <input onChange={ this.handleChange } name="checkbox"
+                        checked={ this.state.isChecked } type="checkbox" />
                 </form>
             </div>
         );
-    }
+    };
+
 }
 export default App;
