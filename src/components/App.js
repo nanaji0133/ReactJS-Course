@@ -11,9 +11,11 @@ class App extends Component
             age: "",
             gender: "",
             location: "hyd",
-            veg: false,
-            kosher: false,
-            lactosFree: false,
+            ditery: {
+                veg: false,
+                kosher: false,
+                lactosFree: false,
+            }
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -22,7 +24,14 @@ class App extends Component
     handleChange (event)
     {
         const { name, value, type, checked } = event.target;
-        type === "checkbox" ? this.setState({ [name]: checked }) :
+        type === "checkbox" ? this.setState((prevState) =>
+        {
+            return {
+                ditery:
+                    prevState.ditery,
+                [name]: checked
+            };
+        }) :
             this.setState({ [name]: value });
     }
     render ()
@@ -91,21 +100,21 @@ class App extends Component
                         <br />
                         <label>
                             veg:
-                        <input type="checkbox" name="veg" checked={ this.state.veg }
+                        <input type="checkbox" name="veg" checked={ this.state.ditery.veg }
                                 onChange={ this.handleChange } />
                         </label>
 
                         <br />
                         <label>
                             kosher:
-                        <input type="checkbox" name="kosher" checked={ this.state.kosher }
+                        <input type="checkbox" name="kosher" checked={ this.state.ditery.kosher }
                                 onChange={ this.handleChange } />
                         </label>
 
                         <br />
                         <label>
                             lactosFree:
-                        <input type="checkbox" name="lactosFree" checked={ this.state.lactosFree }
+                        <input type="checkbox" name="lactosFree" checked={ this.state.ditery.lactosFree }
                                 onChange={ this.handleChange } />
                         </label>
 
@@ -118,8 +127,8 @@ class App extends Component
                         <p>Age: { this.state.age }</p>
                         <p>Gender: { this.state.gender }</p>
                         <p>Location: { this.state.location }</p>
-                        <p>Food: { this.state.veg && "veg, " } { this.state.kosher && "kosher, " }
-                        { this.state.lactosFree && "lactosFree." }</p>
+                        <p>Food: { this.state.ditery.veg && "veg, " } { this.state.ditery.kosher && "kosher, " }
+                            { this.state.ditery.lactosFree && "lactosFree." }</p>
                     </div>
 
                 </form>
