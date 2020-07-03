@@ -1,43 +1,11 @@
-import React, { Component } from "react";
-import Team from "./Team";
+import React from "react";
+import TeamContainer from "./TeamContainer";
 
-class App extends Component
+function App ()
 {
-    constructor()
-    {
-        super();
-        this.state = {
-            loading: true,
-            teamApi: {}
-        };
-    }
-
-    componentDidMount ()
-    {
-
-        fetch("http://127.0.0.1:8000/team/")
-            .then(response => response.json())
-            .then(data =>
-            {
-                this.setState({ teamApi: data });
-                this.setState({ loading: false });
-                console.log(this.state.teamApi);
-            });
-    }
-    render ()
-    {
-        // const teamDetails = this.state.teamApi.map(data => <Team key={ data.id }
-        //     data={ data } />
-        // );
-        return (
-            <div className="my-div">
-
-                { this.state.loading ? <h4>Loading</h4> : this.state.teamApi.map(data =>
-                    <Team key={ data.id }
-                        data={ data } />) }
-
-            </div>
-        );
-    }
+    return (
+        <TeamContainer />
+    );
 }
+
 export default App;
