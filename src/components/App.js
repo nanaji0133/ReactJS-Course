@@ -15,7 +15,6 @@ class App extends Component
     {
         this.interval = setInterval(() => this.clock(), 1000);
     }
-
     clock ()
     {
         this.setState({ time: new Date().toLocaleTimeString() });
