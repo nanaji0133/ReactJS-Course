@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Conrender from "./Conrender";
 
 
 class App extends Component
@@ -7,21 +8,24 @@ class App extends Component
     {
         super();
         this.state = {
-            time: new Date().toLocaleTimeString()
+            time: new Date().toLocaleTimeString(),
+            value: false
         };
     }
 
     componentDidMount ()
     {
-        this.interval = setInterval(() => this.clock(), 1000);
+        this.interval = setInterval(this.clock(), 1000);
+        document.title = "clock";
     }
     clock ()
     {
         this.setState({ time: new Date().toLocaleTimeString() });
     }
 
-    componentWillMount() {
-        clearInterval(this.interval)
+    componentWillMount ()
+    {
+        clearInterval(this.interval);
     }
 
     render ()
@@ -29,7 +33,8 @@ class App extends Component
         return (
 
             <div>
-                { this.state.time}
+                { this.state.time }
+                <Conrender value={ this.state.value } />
             </div >
         );
     }
