@@ -11,10 +11,15 @@ class ThemeContexProvider extends Component
         light: { syntax: "#555", ui: "#ddd", bg: "#eee" },
         dark: { syntax: "#ddd", ui: "#333", bg: "#555" }
     };
+
+    handleChange = (event) =>
+    {
+        this.setState({ isLight: !this.state.isLight });
+    };
     render ()
     {
         return (
-            <ThemeContex.Provider value={ { ...this.state } }>
+            <ThemeContex.Provider value={ { ...this.state, handleChange: this.handleChange } }>
                 { this.props.children }
             </ThemeContex.Provider>
         );
