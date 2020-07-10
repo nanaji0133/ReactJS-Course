@@ -6,9 +6,7 @@ const NewSongForm = (props) =>
 
     const handleChange = (e) =>
     {
-        // const { name, value } = e.target;
         setTitle(e.target.value);
-        console.log(e.target.value);
     };
 
     const handleSubmit = (e) =>
@@ -21,7 +19,7 @@ const NewSongForm = (props) =>
     return (
         <form onSubmit={ handleSubmit }>
             <label>Song:
-                <input type="text" value={ title } onChange={ handleChange } />
+                <input type="text" value={ title } required onChange={ handleChange } />
             </label>
             <button>add Song</button>
 

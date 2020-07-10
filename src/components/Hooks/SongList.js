@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import uuid from "uuid/dist/v1";
 import NewSongForm from './NewSongForm';
 
@@ -10,6 +10,18 @@ const SongList = () =>
         { title: "Song 3", id: 3 }
     ]);
 
+    const [age, setAge] = useState(22);
+
+    useEffect(() =>
+    {
+        console.log("hook ran:", songs);
+    }, [songs]);
+
+    useEffect(() =>
+    {
+        console.log("hook ran:", age);
+    }, [age]);
+
     const addSong = (title) => setSongs([...songs, { title, id: uuid() }]);
 
     return (
@@ -19,6 +31,7 @@ const SongList = () =>
             </ul>
             {/* <button onClick={ addSong }>Add a song</button> */ }
             <NewSongForm addSong={ addSong } />
+            <button onClick={ () => setAge(age + 1) } >Age inc to 1: { age }</button>
         </div>
     );
 };
